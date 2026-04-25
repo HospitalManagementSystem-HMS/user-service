@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  namespace: hms-dev
+  labels:
+    app: user-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: suryaa112003/user-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+        envFrom:
+        - configMapRef:
+            name: user-service-config
+        - secretRef:
+            name: user-service-secret
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 15
+          periodSeconds: 10

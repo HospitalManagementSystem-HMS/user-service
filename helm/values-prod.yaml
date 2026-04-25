@@ -1,0 +1,23 @@
+namespace: hms-prod
+replicaCount: 2
+image:
+  repository: suryaa112003/user-service
+  tag: stable
+  pullPolicy: Always
+service:
+  type: ClusterIP
+  port: 5001
+  
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+env:
+  PORT: "5001"
+  SERVICE_NAME: "user-service"
+secrets:
+  JWT_SECRET: "prod_secret_123"
+  INTERNAL_API_KEY: "prod_internal_key"
