@@ -8,7 +8,7 @@ on:
  
 jobs:
   pipeline:
-    uses: HospitalManagementSystem-HMS/main-project-repo/.github/workflows/templates/backend-template.yaml@dev
+    uses: HospitalManagementSystem-HMS/Hospital-Management/.github/workflows/templates/backend-template.yaml@dev
  
     with:
       service: "user-service"
