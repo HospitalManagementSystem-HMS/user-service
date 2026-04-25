@@ -13,7 +13,7 @@ jobs:
     with:
       service: "user-service"
       image: "ghcr.io/HospitalManagementSystem-HMS/user-service"
-      sonar_key: "sonar.projectKey=HospitalManagementSystem-HMS_user-service_7329dfb6-3ea5-49d4-a532-a62cc4a21a0f"
+      sonar_key: "HospitalManagementSystem-HMS_user-service_7329dfb6-3ea5-49d4-a532-a62cc4a21a0f"
       trigger: ${{ github.event_name }}
  
     secrets: inherit
